@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+    
+    function starString(number){
+        //Part 1
+        if(number.constructor === Number){
+            var total = "*";
+            total = total.repeat(number);
+            console.log(total);
+            // This works both ways!! You can add Strings using Repeat rather than another For Loop
+            var last = ""
+            for(var i=0; i<=number-1; i++){
+                last += "*"
+            }
+            console.log(last);
+        }
+        // Part 2
+        else if(number.constructor === Array){
+            for(var i=0; i<=number.length-1; i++){
+                if(number[i].constructor === Number){
+                    var total = "*";
+                    total = total.repeat(number[i]);
+                    console.log(total);
+                }
+                else if(number[i].constructor === String){
+                    var name = number[i][0].toLowerCase();
+                    name = name.repeat(number[i].length)
+                    console.log(name)
+                }
+
+            }
+        }
+
+    }
+
+    starString(8);
+    starString([1,4,27,54,21,4,12,12,35,3]);
+    starString([4, "Tom", 1, "Michael", 5, 7, "Jimmy Smith"]);
+
+    //
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

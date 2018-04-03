@@ -1,0 +1,36 @@
+<html>
+<body>
+    <h1>Students</h1>
+    <ul id="main">
+        <!-- this is empty-->
+    </ul>
+    
+    <h1="make"></h1>
+<script>
+    function appendList(array, id){
+        for(var i=0; i<array.length; i++){
+            let new_main = document.createElement("li");
+            new_main.innerHTML = array[i];
+            document.getElementById("main").appendChild(new_main);
+        }
+    };
+    let students = ["Jeff", "Jenny", "Javier", "Joslyn", "Joe", "Jane", "Django"];
+    let target_id = "main";
+    appendList(students, target_id);
+
+    function appendList(array, element, id){
+    // element can be p, li, h1, etc etc
+    for(var i=0; i<array.length; i++){
+            let new_main = document.createElement(element);
+            new_main.innerHTML = array[i];
+            document.getElementById("main").appendChild(new_main);
+        }
+    };
+    let people = ["Jeff", "Jenny", "Javier", "Joslyn", "Joe", "Jane", "Django"];
+    let making = "make";
+    let elem = "h1";
+    appendList(students, elem, making);
+
+</script>   
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Basics 2</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+
+        //Test 1
+        function magic_multiply(x, y){
+            if (x === 5 && y === 2){
+                var test = x*y;
+                console.log(test); 
+            }
+            else if (x === 0 && y === 0){
+                var test = x*y;
+                console.log(test);
+            }
+            else if(x.constructor === Array){
+                for(var i=0; i<= x.length-1; i++){
+                    x[i]= x[i] * y;
+                }
+                console.log(x);
+            }
+            else if(x ===7){
+                var test = x*y;
+                console.log(test);
+            }
+            else if(x.constructor === String) {
+                var test = x.repeat(y);
+                console.log(test);
+            }
+
+
+            return x;
+        }
+        
+        //Test 1
+        let test1 = magic_multiply(5, 2);
+        
+        //Test 2 
+        let test2 = magic_multiply(0, 0);
+
+        //Test 3
+        let test3 = magic_multiply([1, 2, 3], 2);
+
+        //Test 4
+        let test4 = magic_multiply(7, "three");
+        
+        //Test 5
+        let test5 = magic_multiply("Brendo", 4);
+        // console.log(test5);
+
+    </script>
+</head>
+<body>
+    <h2>Hello World</h2>
+</body>
+</html>
