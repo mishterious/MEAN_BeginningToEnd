@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+        class Deck {
+            constructor(){
+                this.deck = [];
+                this.reset();
+            }
+
+            reset(){
+                this.deck = [];
+                let suits = ['Clubs', 'Hearts', 'Diamonds', 'Spades'];
+                let pips = ['Ace', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'Jack', 'Queen', 'King'];
+
+                for(let suit in suits){
+                    for(let pip in pips ){
+                        this.deck.push(pips[pip] + " of " + suits[suit]);
+                    }
+                }
+                return this;
+            }
+
+            shuffle(){
+                let m = this.deck.length, t, i;
+                while(m) {
+                    i = Math.floor(Math.random() * m--);
+                    t = this.deck[m];
+                    this.deck[m] = this.deck[i];
+                    this.deck[i] = t;
+                }
+                return this;
+            }
+
+            deal(){
+                return this.deck.pop();
+            }
+        }
+
+        class Player {
+            constructor(name){
+                this.name = name;
+                this.hand = [];
+            }
+
+            draw(deck){
+                this.hand.push(deck.deal());
+                return this;
+            }
+
+            discard(){
+                this.hand.pop();
+                return this;
+            }
+        }
+
+        console.log(45678987654345678)
+        let deck1 = new Deck();
+        deck1.shuffle().shuffle().reset().shuffle();
+        console.log(deck1)
+
+        let stephen = new Player('stephen');
+        stephen.draw(deck1).draw(deck1).draw(deck1).draw(deck1).draw(deck1)
+        let barak = new Player('barak');
+        barak.draw(deck1).draw(deck1).draw(deck1).draw(deck1).draw(deck1)
+        let steve = new Player('steve');
+        steve.draw(deck1).draw(deck1).draw(deck1).draw(deck1).draw(deck1)
+        let elon = new Player('elon');
+        elon.draw(deck1).draw(deck1).draw(deck1).draw(deck1).draw(deck1)
+        console.log(` Stephen's hands ${stephen.hand}, Barak's hands ${barak.hand}, Steve's hands ${steve.hand}, Elon's hands ${elon.hand}`)
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

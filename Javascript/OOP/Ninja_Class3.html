@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+        // function Person(name) {
+        //     const self = this;
+        //     const privateVariable = "This variable is private";
+        //     const privateMethod = function() {
+        //         console.log("this is a private method for " + self.name);
+        //         console.log(self);
+        //     }
+        //     this.name = name;
+        //     this.health = 100;
+
+        //     let speed = 27;
+        //     let strength = 30;
+
+        //     this.sayName = function() {
+        //         console.log("Hello my name is " + this.name + " and I am " + this.health + " years old!");
+        //     }
+
+        //     this.showStats = function() {
+        //         console.log(`Name: ${this.name}, Health: ${speed} and I am  ${strength} years old!`);
+        //     }
+
+        //     this.drinkSake = function(){
+        //         this.health += 10;
+        //         console.log(`Here's my health ${this.health}`);
+        //     }
+
+        //     this.punch = function(puncher){
+        //         if(puncher instanceof Person){
+        //             puncher.health -= 10;
+        //         }
+        //         console.log(`It looks like ${puncher.name} got punched by ${this.name} and he only has ${puncher.health} left!`);
+        //     }
+
+        //     this.kick = function(kicker){
+        //         if(kicker instanceof Person){
+        //             kicker.health -= 10 * strength;
+        //             console.log(`It looks like ${kicker.name} got punched by ${this.name} and he only has ${kicker.health} left!`);
+        //         }
+        //     }
+        // }
+
+        class Ninja {
+            constructor(name){
+                this.name = name;
+                this.health = 100;
+                this.speed = 27;
+                this.strength = 30;
+            }
+
+            sayName(){
+                console.log(`This ninja's name is: ${this.name}`);
+            }
+
+            showStats(){
+                console.log(`${this.name} stats are incredible! His Health is: ${this.speed} and his strength is  ${this.strength}`);
+            }
+            
+            drinkSake(){
+                this.health += 10;
+                console.log(`Here's my health ${this.health}`);
+            }
+        }
+
+        class Sensei extends Ninja {
+            constructor(name){
+                super(name);
+                super.health = 200;
+                super.speed = 10;
+                super.strength = 10;
+                this.wisdom = 10;
+            }
+
+            speakWisdom(){
+                const message = super.drinkSake();
+                console.log("The greatest enemy of knowledge is not ignorance, it is the illusion of knowledge")
+            }
+
+            
+
+
+        }
+
+        const ninja1 = new Ninja("Richard");
+        ninja1.sayName();
+        ninja1.showStats();
+        ninja1.drinkSake(); 
+     
+        const blueNinja = new Ninja("Goemon");
+        const redNinja = new Ninja("Bill Gates");
+        // redNinja.punch(blueNinja);
+        // blueNinja.kick(redNinja);
+
+        const superSensei = new Sensei("Master Splinter");
+        superSensei.speakWisdom();
+        // -> "What one programmer can do in one month, two programmers can do in two months."
+        superSensei.showStats();
+        // -> "Name: Master Splinter, Health: 210, Speed: 10, Strength: 10"
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

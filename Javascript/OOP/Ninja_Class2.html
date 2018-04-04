@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+        function Person(name) {
+            const self = this;
+            const privateVariable = "This variable is private";
+            const privateMethod = function() {
+                console.log("this is a private method for " + self.name);
+                console.log(self);
+            }
+            this.name = name;
+            this.health = 100;
+
+            let speed = 27;
+            let strength = 30;
+
+            this.sayName = function() {
+                console.log("Hello my name is " + this.name + " and I am " + this.health + " years old!");
+            }
+
+            this.showStats = function() {
+                console.log(`Name: ${this.name}, Health: ${speed} and I am  ${strength} years old!`);
+            }
+
+            this.drinkSake = function(){
+                this.health += 10;
+                console.log(`Here's my health ${this.health}`);
+            }
+
+            this.punch = function(puncher){
+                if(puncher instanceof Person){
+                    puncher.health -= 10;
+                }
+                console.log(`It looks like ${puncher.name} got punched by ${this.name} and he only has ${puncher.health} left!`);
+            }
+
+            this.kick = function(kicker){
+                if(kicker instanceof Person){
+                    kicker.health -= 10 * strength;
+                    console.log(`It looks like ${kicker.name} got punched by ${this.name} and he only has ${kicker.health} left!`);
+                }
+            }
+
+
+        }
+        const ninja1 = new Person("Alf");
+        ninja1.sayName();
+        ninja1.showStats();
+        ninja1.drinkSake(); 
+    
+        const blueNinja = new Person("Goemon");
+        const redNinja = new Person("Bill Gates");
+        redNinja.punch(blueNinja);
+        
+        blueNinja.kick(redNinja);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
