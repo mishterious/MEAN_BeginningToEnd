@@ -1,0 +1,55 @@
+<html>
+<head>
+<title></title>
+    <!-- <link rel='stylesheet' href='/stylesheets/style.css' /> -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script type ="text/javascript" src="/socket.io/socket.io.js"></script>
+    <script type ="text/javascript">
+         $(document). ready(function (){
+            // this triggers the connection event in our server!
+            var socket  = io.connect();
+            // we'll write all the socket stuff after the above line!
+            $('.survey').submit(function (e){
+                e.preventDefault();
+                var data = $('.survey :input').serializeArray();
+                console.log(data);
+                socket.emit( "posting_form", data);
+            });
+            socket.on( 'server_response', function (msg){
+                console.log('The server says: '  + msg);
+                $('.close_survey').append('<p> ' + msg + '</p>')
+            });
+        })
+    </script>
+</head>
+<body>
+    <p class="close_survey" style="background-color: green;"></p>
+    <form class="survey">
+        
+        <h4>Your Name: <input type="text" name="name"></h4>
+        <h4>Dojo Location: 
+            <select class="block" name="location" id="location">
+                <option value="Mountain View">Mountain View</option>
+                <option value="San Jose">San Jose</option>
+                <option value="San Fransisco">San Franscico</option>
+                <option value="Berkley">Berkley</option>
+                <option value="Los Angeles">Los Angeles</option>
+            </select>
+        </h4>
+        <h4>Favorite Language: 
+            <select class="block" name="language" id="language">
+                <option value="Javascript">Javascript</option>
+                <option value="Python">Python</option>
+                <option value="Ruby">Ruby</option>
+                <option value="iOS">iOS</option>
+                <option value="R">R</option>
+            </select>
+        </h4>
+        <h4>Comment (optional): <br>
+            <textarea name="comments" id="" cols="30" rows="5"></textarea>
+        </h4>
+        <button>Submit</button>
+        <!-- web page goes here -->
+    </form>
+</body>
+</html>

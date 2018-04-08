@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Math</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+        function zero_negativity(array){
+            if(array.constructor === Array){
+                for(var i=0; i<=array.length-1; i++){
+                    if(array[i] < 0){
+                        console.log("There's a negative number here");
+                        return false;
+                        break;
+                    }
+                    else{
+                        console.log('True');
+                        // console.log(array[i]);
+                    }
+                console.log
+                }
+            }
+            return array;
+        }
+
+        zero_negativity([1,3,55,3,-3,3,45])
+
+
+        function is_even(number){
+            if(number%2 ===0){
+                // console.log(number + " is even");
+                // console.log(number/2);
+                return true;
+            }
+            else{
+                // console.log(number + " is odd");
+                return false; 
+            }
+        }
+        is_even(234);
+
+
+        function how_many_even(array){
+            var count = 0;
+            for(var i=0; i<=array.length-1; i++){
+                if(is_even(array[i])){
+                    count += 1;
+                }
+            }
+            console.log(count);
+        }
+
+        how_many_even([1,1,32,56,6,32,324334,543,12,3])
+
+
+        function create_dummy_array(dummy){
+            var latest = []
+            for(var i=0; i<dummy; i++){
+                let x = Math.floor(Math.random() * 9);
+                latest.push(x);
+            }
+            console.log(latest);
+        }
+
+        create_dummy_array(4);
+
+
+        function random_choice(array){
+            let x = Math.floor(Math.random() * (array.length-1));
+            console.log(array[x]);
+        }
+        
+        random_choice([1,4,676,54,21,4,5645,12,35,3])
+    </script>
+</head>
+<body>
+    <h4>Where here!</h4>
+</body>
+</html>
