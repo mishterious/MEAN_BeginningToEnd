@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script type ="text/javascript" src="/socket.io/socket.io.js"></script>
+    <script type ="text/javascript">
+        $(document).ready(function (){
+           // this triggers the connection event in our server!
+           var socket  = io.connect();
+           var name = prompt("enter_name");
+           if (name == ""){
+                alert("Enter a name")
+                location.reload()
+           }
+           // we'll write all the socket stuff after the above line!
+           $('.ok').submit(function (){
+               var data = $('.message').val();
+               var msg = name + " " + data  
+               console.log(msg);
+               socket.emit("on_user", msg);
+               $('.message').val("");
+               return false;
+           });
+           socket.on('server_response', function (msg){
+               console.log('The server says: '  + msg.data);
+               console.log(msg);
+               $('.newMessage').append('<p> ' + msg.data + '</p>')
+           });
+       })
+   </script>
+</head>
+<body>
+    <div class="newMessage">
+        <% for(var x in msgs) { %>
+            <p><%= msgs[x] %></p>
+        <% } %>
+        
+    </div>
+    <h4>The paga at https://localhost</h4>
+    <h4>Your name: </h4>
+    <form class="ok">
+        <input class="message" type="text">
+        <button>OK</button>
+    </form>
+</body>
+</html>
