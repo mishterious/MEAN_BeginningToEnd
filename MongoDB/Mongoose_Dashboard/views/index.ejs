@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+<title>Dashboard</title>
+</head>
+<body>
+    <h1>All Animals</h1>
+
+    <p class="center">_________________________________________________________</p>
+    <% for(x in animal){ %>
+        <h2><a href="/edit/<%= animal[x].id %>" class="name"><%= animal[x].name %></a> </h2>
+        <h4><%= animal[x].strength %></h4>
+        <h4><%= animal[x].size %></h4>
+        <form action="/delete/<%= animal[x].id %>" method="post">
+            <button>Remove the <%= animal[x].name %></button>
+        </form>
+        <p class="center">_________________________________________________________</p>
+    <% } %>
+
+    <button><a href="/new">Add a new animal</a></button>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.13.0/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>

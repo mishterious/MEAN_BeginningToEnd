@@ -19,16 +19,31 @@ app.set('view engine', 'ejs');
 mongoose.connect('mongodb://localhost/basic_mongoose');
 
 var UserSchema = new mongoose.Schema({
-    name: String,
-    age: Number
-   })
-mongoose.model('User', UserSchema); // We are setting this Schema in our Models as 'User'
-var User = mongoose.model('User') /
+    name: {type: String},
+    age: {type: Number}
+}, {timestamps: true})
+
+var UserSchema = new mongoose.Schema({
+    first_name:  { type: String, required: true, minlength: 6},
+    last_name: { type: String, required: true, maxlength: 20 },
+    age: { type: Number, min: 1, max: 150 },
+    email: { type: String, required: true }
+}, {timestamps: true });
+
+// Store the Schema under the name 'User'
+mongoose.model('User', UserSchema);
+// Retrieve the Schema called 'User' and store it to the variable User
+var User = mongoose.model('User');
 
 mongoose.Promise = global.Promise;
 // Routes
 // Root Request
 app.get('/', function(req, res) {
+    User.find({}, function(err, users) {
+    // Retrieve an array of users
+    // This code will run when the DB is done attempting to retrieve all matching records to {}
+    })
+       
     // This is where we will retrieve the users from the database and include them in the view page we will be rendering.
     res.render('index');
 })
@@ -47,8 +62,8 @@ app.post('/users', function(req, res) {
         console.log('successfully added a user!');
         res.redirect('/');
         }
-    })
-})
+    });
+});
 // Setting our Server to Listen on Port: 8000
 app.listen(8000, function() {
     console.log("listening on port 8000");

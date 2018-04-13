@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+<title>Edit the This One</title>
+</head>
+<body>
+    <% for(x in animal){ %>
+    <h1>The <%= animal[x].name %> has changed a lot!</h1>
+    <p class="center">_________________________________________________________</p>
+        <h2><a href="/update/<%= animal[x].id %>"><%= animal[x].name %></a> </h2>
+
+        <h4><%= animal[x].height %></h4>
+        <h4><%= animal[x].weight %></h4>
+        <p>The <%= animal[x].name %> maybe one of the strongest of it's kind. The strength and power of this animal is a force to be reckonned with. Is it an Alpha? <%= animal[x].alpha %></p>
+        <button><a href="/delete/<%= animal[x].id %>">If you don't think so, remove it!</a></button>
+        <p class="center">_________________________________________________________</p>
+
+    <% } %>
+
+    <form action="/update/<%= animal[x].id %>" method="post">
+        <p>What's different about the <%= animal[x].name %>?</p> 
+        <p>The <%= animal[x].name %>'s strength: <input type="text" name="strength"></p>
+        <p>The <%= animal[x].name %>'s height: <input type="text" name="height"></p>
+        <p>The <%= animal[x].name %>'s weight: <input type="text" name="weight"></p>
+        <p>Is this animal an Alpha? <input type="text" name="alpha"></p>
+        <button>Updated it here.</button>
+    </form>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.13.0/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>
