@@ -1,0 +1,52 @@
+class Bike {
+    constructor(
+        public price: string, 
+        public max_speed: number,
+        public miles: number
+    ) {}
+   birthday = function(){
+      this.max_speed += 190;
+   }
+}
+
+function displayInfo(ninja: Bike){
+   return `Congratulations, ${ninja.price} ${ninja.max_speed}, you rode ${ninja.miles} belts!`;
+}
+
+
+function ride(bikes) {
+    bikes.miles *= 1320;
+    return `You've been driving a lot! Your bike now has ${bikes.miles}`;
+}
+
+
+function reverse(bikes) {
+    bikes.miles -= 10;
+    return `It's going faster than it should it's down to ${bikes.miles}`;
+}
+
+
+const baba = new Bike("$1200", 56, 2387);
+const baba2 = new Bike("$9800", 190, 270);
+const baba3 = new Bike("$32000", 160, 0);
+
+console.log(displayInfo(baba));
+console.log(displayInfo(baba2));
+console.log(displayInfo(baba3));
+
+console.log(ride(baba));
+console.log(ride(baba2));
+console.log(ride(baba3));
+
+console.log(reverse(baba));
+console.log(reverse(baba2));
+console.log(reverse(baba3));
+
+console.log(baba);
+console.log(baba2);
+console.log(baba3);
+
+// setTimeout(babar.birthday(), 1000)
+// setTimeout(function(){
+//    console.log(`Babar's age is ${babar.age}.`)
+//    }, 2000)
