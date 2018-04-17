@@ -1,0 +1,33 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    Welcome to {{ title }}!
+  </h1>
+
+<h4>Restful Tasks API</h4>
+<h2>All the tasks: </h2>
+<ul>
+  <li>Learn Angular - Understand services</li>
+  <li>Manipulate the DOM - Use the 'for of' loop</li>
+  <li>Bind events - Parentheses indicate events</li>
+</ul>
+
+<h2>The third task:</h2>
+
+<div *ngFor="let task of tasks">
+  <p> {{ task.title }} </p>
+  <input type="text" [value]= "task._id"/><button (click)="taskByID(task._id)">Click find me by ID!</button>
+  <div *ngIf="task.description == oneTask.description"> 
+    <h3>{{ oneTask.description }}</h3>
+  </div>
+</div>
+
+
+<h6>Tasks working </h6>
+
+
+<button (click)="onButtonClick()" >Click me!</button>
+
+<button (click)="onButtonClickParams(5, 'hello')">Click me!</button>
+<button (click)="onButtonClickEvent($event)">Click me!</button>
+
