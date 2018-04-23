@@ -3,30 +3,41 @@
   <h1>
     Welcome to {{ title }}!
   </h1>
+  <!-- <button [routerLink]="['alpha']">Load Alpha</button>
+  <button [routerLink]="['beta']">Load Beta</button>
+  <router-outlet></router-outlet>  -->
+    
 
-<h4>Restful Tasks API</h4>
-<h2>All the tasks: </h2>
-<ul>
-  <li>Learn Angular - Understand services</li>
-  <li>Manipulate the DOM - Use the 'for of' loop</li>
-  <li>Bind events - Parentheses indicate events</li>
-</ul>
+  <form (submit)="onSubmit()">
+    <p> {{ newTask | json }} </p>
+    <h3> Title: <input type="text" name="newTask.title" [(ngModel)]="newTask.title" placeholder="Movie Title"></h3> 
+    <h3> Description: <input type="text"  name="newTask.description" [(ngModel)]="newTask.description" placeholder="Movie Description"></h3>
+    <input type="submit" value="Create Task" />
+  </form>
 
-<h2>The third task:</h2>
-
-<div *ngFor="let task of tasks">
-  <p> {{ task.title }} </p>
-  <input type="text" [value]= "task._id"/><button (click)="taskByID(task._id)">Click find me by ID!</button>
-  <div *ngIf="task.description == oneTask.description"> 
-    <h3>{{ oneTask.description }}</h3>
-  </div>
+  <div *ngFor="let task of tasks">
+    <h1> {{ task.title }} </h1>
+    <p>{{ task.description }} </p>
+    <button (click)="taskByID(task._id)">Edit this Movie</button>
+    <button (click)="deleteByID(task._id)">Delete this Movie</button>
+    <div *ngIf="task._id == oneTask._id"> 
+      <h3>{{ oneTask.description }}</h3>
+    </div>
+    <div *ngIf="task.description == oneTask.description">
+      <form (submit)="edit(task._id)">
+        <p> {{ newTask | json }} </p>
+        <h3> Title: <input type="text" name="newTask.title" [(ngModel)]="newTask.title" placeholder="Movie Title"></h3> 
+        <h3> Description: <input type="text"  name="newTask.description" [(ngModel)]="newTask.description" placeholder="Movie Description"></h3>
+        <button (click)="edit(task._id)" type="submit">Edit this Movie</button>
+      </form>
+    </div>
 </div>
 
 
-<h6>Tasks working </h6>
 
 
-<button (click)="onButtonClick()" >Click me!</button>
+<br><br><br>
+
 
 <button (click)="onButtonClickParams(5, 'hello')">Click me!</button>
 <button (click)="onButtonClickEvent($event)">Click me!</button>

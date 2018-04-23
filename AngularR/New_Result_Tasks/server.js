@@ -15,10 +15,6 @@ app.use(express.static(path.join(__dirname, './static')));
 //ANGULAR is being connected:
 app.use(express.static(__dirname + "/myFirstApp/dist"));
 
-//Creating the file to store and connect with the html templates:
-// app.set('views', p ath.join(__dirname, './client/views'));
-// app.set('view engine', 'ejs');
-
 
 // configure body-parser to read JSON
 app.use(bodyParser.json());
@@ -30,7 +26,8 @@ mongoose.connect('mongodb://localhost/mongoosedb_dashboard');
 
 //The Schema along with the validation about how data is stored.
 var TaskSchema = new mongoose.Schema({
-    title:  {type: String, required: [true, "You need a name"], minlength: 1}
+    title:  {type: String, required: [true, "You need a name"], minlength: 1},
+    description: {type: String, required: [true, "You need a name"], minlength: 1},
 }, {timestamps: true });
 
 
@@ -41,6 +38,11 @@ var Task = mongoose.model('Task', TaskSchema);
 //Promises are created to help stuff:
 mongoose.Promise = global.Promise;
 
+
+// app.get('/', function(req, res){
+//     console.log("## server.js ## / ##")
+//     res.redirect('/task')
+// })
 
 //All the Views and Logic 
 app.get('/task', function(req, res){
@@ -103,12 +105,11 @@ app.post('/create', function(req, res){
 });
 
 
-app.post('/update/:id', function(req,res){
+app.post('/edit/:id', function(req,res){
     console.log(req.params.id);
     console.log("===============")
     Task.findOne({_id: req.params.id}, function(err, task){
-        task.title = req.body.title;
-        task.description = req.body.description;
+        task.name = req.body.name;
         task.save(function(err){
             if(err){
                 console.log('==== there is an error! =====')
@@ -125,7 +126,7 @@ app.post('/update/:id', function(req,res){
 });
 
 
-app.post('/delete/:id', function(req, res){
+app.delete('/delete/:id', function(req, res){
     console.log(req.params.id);
     Task.remove( {_id: req.params.id}, function(err, result){
         // This code will run when the DB has attempted to remove one matching record to {_id: 'insert record unique id here'}

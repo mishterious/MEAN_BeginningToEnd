@@ -1,0 +1,29 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+
+  <a [routerLink]="['/all']" >Home</a>
+  <a [routerLink]="['/quoteadd/', author._id , author.name]"> Add a quote</a>
+
+  <h4>Quotes by {{ author.name }}</h4>
+
+  
+  <table>
+    <tr>
+      <th>Quotes </th>
+      <th>Vote </th>  
+      <th>Actions available</th>
+    </tr>
+    <tr *ngFor="let quote of author.messages">
+      <td>{{ quote.quote }}</td>
+      <td>{{ quote.rank }}</td>
+      <td> 
+        <button (click)="upRank(quote)">Vote Up</button> 
+        <button (click)="downRank(quote)">Vote Down</button> 
+        <button (click)="deleteByID(quote._id)">DELETE</button>
+      </td>
+    </tr>
+
+  </table>
+
+
+<router-outlet></router-outlet> 

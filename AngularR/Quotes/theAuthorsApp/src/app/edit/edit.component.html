@@ -1,0 +1,18 @@
+
+
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+
+    <a [routerLink]="['/all']" >Home</a>
+  
+    <h4>Add a new author:</h4>
+    <form (submit)="edit(_id)">
+      <p> {{ author.name }} </p>
+      <h3> Name: <input type="text" name="author.name" [(ngModel)]="author.name" placeholder="{{ name }}"></h3>
+      <button [routerLink]="['/']">Cancel</button> 
+      <button type="submit">Submit</button>
+    </form>
+  
+</div>
+<router-outlet></router-outlet> 
+  
